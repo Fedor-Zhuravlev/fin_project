@@ -50,7 +50,6 @@ def ask_gpt(messages):
         # если всё успешно - считаем количество токенов, потраченных на ответ, возвращаем статус, ответ, и количество токенов в ответе
         answer = response.json()['result']['alternatives'][0]['message']['text']
         tokens_in_answer = count_gpt_tokens([{'role': 'assistant', 'text': answer}])
-        #tokens_in_answer = response.json()['result']['usage']['totalTokens']
         return True, answer, tokens_in_answer
     except Exception as e:
         logging.error(e)  # если ошибка - записываем её в логи
